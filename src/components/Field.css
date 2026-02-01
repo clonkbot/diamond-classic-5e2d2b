@@ -1,0 +1,413 @@
+.field-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  transform: rotate(45deg);
+  border-radius: 4px 100px 4px 4px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.outfield {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a4d2e 0%, #2d5a3d 50%, #1a4d2e 100%);
+}
+
+.outfield-grass {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.02) 8px,
+      rgba(255, 255, 255, 0.02) 16px
+    );
+}
+
+.warning-track {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 100px 0 0;
+  border: 20px solid #8b6914;
+  border-left: none;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+
+.fence {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 100px 0 0;
+  border: 6px solid #1a3d2e;
+  border-left: none;
+  border-bottom: none;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.fence-section {
+  position: absolute;
+  width: 3px;
+  height: 8px;
+  background: #f5e6c8;
+  top: -4px;
+}
+
+.fence-section:nth-child(1) { right: 0; top: 50%; transform: rotate(45deg); }
+.fence-section:nth-child(2) { right: 10%; top: 30%; transform: rotate(30deg); }
+.fence-section:nth-child(3) { right: 20%; top: 18%; transform: rotate(20deg); }
+.fence-section:nth-child(4) { right: 30%; top: 10%; transform: rotate(10deg); }
+.fence-section:nth-child(5) { right: 40%; top: 5%; transform: rotate(5deg); }
+.fence-section:nth-child(6) { right: 50%; top: 2%; }
+.fence-section:nth-child(7) { right: 60%; top: 2%; }
+.fence-section:nth-child(8) { right: 70%; top: 5%; transform: rotate(-5deg); }
+.fence-section:nth-child(9) { right: 80%; top: 10%; transform: rotate(-10deg); }
+.fence-section:nth-child(10) { right: 88%; top: 18%; transform: rotate(-20deg); }
+.fence-section:nth-child(11) { right: 94%; top: 30%; transform: rotate(-30deg); }
+.fence-section:nth-child(12) { right: 98%; top: 45%; transform: rotate(-45deg); }
+
+.infield {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 70%;
+}
+
+.infield-grass {
+  position: absolute;
+  inset: 0;
+  background: #2d5a3d;
+}
+
+.infield-dirt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 0% 100%, #8b6914 0%, #8b6914 60%, transparent 60%);
+}
+
+.basepath {
+  position: absolute;
+  background: rgba(245, 230, 200, 0.3);
+  height: 3px;
+}
+
+.home-to-first {
+  width: 80px;
+  bottom: 20px;
+  left: 20px;
+  transform-origin: left;
+  transform: rotate(-45deg);
+}
+
+.first-to-second {
+  width: 80px;
+  bottom: 75px;
+  left: 75px;
+  transform-origin: left;
+  transform: rotate(45deg);
+}
+
+.second-to-third {
+  width: 80px;
+  top: 60px;
+  left: 60px;
+  transform-origin: right;
+  transform: rotate(-45deg);
+}
+
+.third-to-home {
+  width: 80px;
+  bottom: 75px;
+  left: -5px;
+  transform-origin: right;
+  transform: rotate(45deg);
+}
+
+.base {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.base-diamond {
+  width: 14px;
+  height: 14px;
+  background: #f5e6c8;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.base.occupied .base-diamond {
+  background: var(--bulb-yellow);
+  box-shadow: 0 0 15px var(--bulb-yellow);
+}
+
+.runner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--rust-orange);
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  animation: runnerPulse 1s ease infinite;
+}
+
+@keyframes runnerPulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.2); }
+}
+
+.base.first {
+  bottom: 55px;
+  left: 55px;
+}
+
+.base.second {
+  top: 85px;
+  left: 85px;
+}
+
+.base.third {
+  bottom: 125px;
+  left: -15px;
+}
+
+.home-plate {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plate-shape {
+  width: 16px;
+  height: 16px;
+  background: #f5e6c8;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
+  transform: rotate(-45deg);
+}
+
+.batter-box {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  border: 1px solid rgba(245, 230, 200, 0.4);
+  transform: rotate(-45deg);
+}
+
+.batter-box.left {
+  top: -15px;
+  left: -25px;
+}
+
+.batter-box.right {
+  bottom: -15px;
+  right: -25px;
+}
+
+.pitchers-mound {
+  position: absolute;
+  bottom: 65px;
+  left: 65px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mound-dirt {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #a07818 0%, #8b6914 100%);
+  border-radius: 50%;
+}
+
+.rubber {
+  width: 12px;
+  height: 4px;
+  background: #f5e6c8;
+  transform: rotate(-45deg);
+  position: relative;
+  z-index: 1;
+}
+
+.field-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(245, 230, 200, 0.5);
+  transform: rotate(0deg);
+}
+
+/* Animations */
+.homerun-animation {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ball-trail {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  animation: flyOut 1s ease-out forwards;
+}
+
+.flying-ball {
+  width: 8px;
+  height: 8px;
+  background: #f5e6c8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+}
+
+@keyframes flyOut {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(200px, -200px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.fireworks {
+  position: absolute;
+  inset: 0;
+}
+
+.firework {
+  position: absolute;
+  top: 20%;
+  width: 6px;
+  height: 6px;
+  background: var(--bulb-yellow);
+  border-radius: 50%;
+  animation: explode 0.8s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(3);
+    opacity: 1;
+    box-shadow:
+      20px 0 0 var(--rust-orange),
+      -20px 0 0 var(--rust-orange),
+      0 20px 0 #fff,
+      0 -20px 0 #fff,
+      14px 14px 0 var(--bulb-yellow),
+      -14px 14px 0 var(--bulb-yellow),
+      14px -14px 0 var(--bulb-yellow),
+      -14px -14px 0 var(--bulb-yellow);
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+    box-shadow:
+      30px 0 0 var(--rust-orange),
+      -30px 0 0 var(--rust-orange),
+      0 30px 0 #fff,
+      0 -30px 0 #fff,
+      21px 21px 0 var(--bulb-yellow),
+      -21px 21px 0 var(--bulb-yellow),
+      21px -21px 0 var(--bulb-yellow),
+      -21px -21px 0 var(--bulb-yellow);
+  }
+}
+
+.hit-animation {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  pointer-events: none;
+}
+
+.ground-ball {
+  width: 6px;
+  height: 6px;
+  background: #f5e6c8;
+  border-radius: 50%;
+  animation: groundBall 1s ease-out forwards;
+}
+
+@keyframes groundBall {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, -50px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .field {
+    width: 220px;
+    height: 220px;
+  }
+
+  .base.first {
+    bottom: 45px;
+    left: 45px;
+  }
+
+  .base.second {
+    top: 65px;
+    left: 65px;
+  }
+
+  .base.third {
+    bottom: 100px;
+    left: -10px;
+  }
+
+  .pitchers-mound {
+    bottom: 50px;
+    left: 50px;
+  }
+
+  .home-to-first,
+  .first-to-second,
+  .second-to-third,
+  .third-to-home {
+    width: 60px;
+  }
+}
