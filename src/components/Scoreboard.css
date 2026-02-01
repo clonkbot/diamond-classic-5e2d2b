@@ -1,0 +1,206 @@
+.scoreboard {
+  perspective: 1000px;
+}
+
+.scoreboard-frame {
+  background: linear-gradient(180deg, #2a3d28 0%, #1a2918 100%);
+  border: 6px solid #3d2914;
+  border-radius: 4px;
+  padding: 1.25rem;
+  min-width: 280px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: rotateX(2deg);
+}
+
+.scoreboard-rivets {
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+}
+
+.rivet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #5a4a3a, #2a1a0a);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.rivet:nth-child(1) { top: 0; left: 0; }
+.rivet:nth-child(2) { top: 0; right: 0; }
+.rivet:nth-child(3) { bottom: 0; left: 0; }
+.rivet:nth-child(4) { bottom: 0; right: 0; }
+.rivet:nth-child(5) { top: 0; left: 50%; transform: translateX(-50%); }
+.rivet:nth-child(6) { bottom: 0; left: 50%; transform: translateX(-50%); }
+.rivet:nth-child(7) { top: 50%; left: 0; transform: translateY(-50%); }
+.rivet:nth-child(8) { top: 50%; right: 0; transform: translateY(-50%); }
+
+.scoreboard-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(245, 230, 200, 0.2);
+}
+
+.inning-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.inning-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgba(245, 230, 200, 0.6);
+}
+
+.inning-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inning-value {
+  font-family: 'Righteous', cursive;
+  font-size: 2.5rem;
+  color: var(--bulb-yellow);
+  text-shadow: 0 0 15px rgba(255, 217, 61, 0.6);
+}
+
+.inning-half {
+  font-size: 1.5rem;
+  color: var(--rust-orange);
+}
+
+.score-section {
+  margin-bottom: 1rem;
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(245, 230, 200, 0.1);
+}
+
+.team-row.home {
+  border-bottom: none;
+}
+
+.team-name {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--scoreboard-tan);
+}
+
+.score-display {
+  display: flex;
+  gap: 4px;
+}
+
+.score-digit {
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+  width: 32px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  color: var(--bulb-yellow);
+  border: 2px solid #2a2a2a;
+  text-shadow: 0 0 10px rgba(255, 217, 61, 0.8);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.count-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid rgba(245, 230, 200, 0.2);
+}
+
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.count-label {
+  font-family: 'Righteous', cursive;
+  font-size: 1.25rem;
+  width: 24px;
+  color: var(--scoreboard-cream);
+}
+
+.indicator-lights {
+  display: flex;
+  gap: 8px;
+}
+
+.indicator-bulb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.indicator-bulb.ball.lit {
+  background: #3dff3d;
+  border-color: #2a8a2a;
+  box-shadow:
+    0 0 10px #3dff3d,
+    0 0 20px rgba(61, 255, 61, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.indicator-bulb.strike.lit {
+  background: var(--bulb-yellow);
+  border-color: #aa9a2a;
+  box-shadow:
+    0 0 10px var(--bulb-yellow),
+    0 0 20px rgba(255, 217, 61, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.indicator-bulb.out.lit {
+  background: #ff4444;
+  border-color: #aa2a2a;
+  box-shadow:
+    0 0 10px #ff4444,
+    0 0 20px rgba(255, 68, 68, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .scoreboard-frame {
+    min-width: 240px;
+    padding: 1rem;
+  }
+
+  .inning-value {
+    font-size: 2rem;
+  }
+
+  .score-digit {
+    font-size: 1.5rem;
+    width: 28px;
+    height: 36px;
+  }
+
+  .indicator-bulb {
+    width: 16px;
+    height: 16px;
+  }
+}
