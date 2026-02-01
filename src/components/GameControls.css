@@ -1,0 +1,306 @@
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.status-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.batting-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.batting-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(245, 230, 200, 0.5);
+}
+
+.batting-team {
+  font-family: 'Righteous', cursive;
+  font-size: 1.5rem;
+  color: var(--rust-orange);
+  text-shadow: 0 0 10px rgba(196, 92, 38, 0.4);
+}
+
+.result-display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 3px solid var(--aged-wood);
+  border-radius: 4px;
+  animation: resultPop 0.3s ease;
+}
+
+@keyframes resultPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.result-bulbs {
+  display: flex;
+  gap: 4px;
+}
+
+.result-bulb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: bulbFlash 0.3s ease infinite alternate;
+}
+
+@keyframes bulbFlash {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+.result-display.result-good .result-bulb {
+  background: var(--bulb-yellow);
+  box-shadow: 0 0 8px var(--bulb-yellow);
+}
+
+.result-display.result-bad .result-bulb {
+  background: #ff4444;
+  box-shadow: 0 0 8px #ff4444;
+}
+
+.result-display.result-neutral .result-bulb {
+  background: #3dff3d;
+  box-shadow: 0 0 8px #3dff3d;
+}
+
+.result-text {
+  font-family: 'Righteous', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.result-display.result-good .result-text {
+  color: var(--bulb-yellow);
+  text-shadow: 0 0 15px rgba(255, 217, 61, 0.6);
+}
+
+.result-display.result-bad .result-text {
+  color: #ff6666;
+  text-shadow: 0 0 15px rgba(255, 68, 68, 0.6);
+}
+
+.result-display.result-neutral .result-text {
+  color: #88ff88;
+  text-shadow: 0 0 15px rgba(61, 255, 61, 0.6);
+}
+
+.controls-panel {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn {
+  font-family: 'Teko', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 2rem;
+  border: 4px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.pitch-btn {
+  background: linear-gradient(180deg, var(--stadium-green) 0%, var(--stadium-green-dark) 100%);
+  border-color: var(--scoreboard-cream);
+  color: var(--scoreboard-cream);
+}
+
+.pitch-btn:hover {
+  box-shadow: 0 0 30px rgba(245, 230, 200, 0.3);
+  border-color: var(--bulb-yellow);
+}
+
+.swing-btn {
+  background: linear-gradient(180deg, var(--rust-orange) 0%, var(--rust-dark) 100%);
+  border-color: var(--scoreboard-cream);
+  color: var(--scoreboard-cream);
+}
+
+.swing-btn:hover {
+  box-shadow: 0 0 30px rgba(255, 217, 61, 0.4);
+  border-color: var(--bulb-yellow);
+}
+
+.take-btn {
+  background: linear-gradient(180deg, #2a4a3a 0%, #1a3a2a 100%);
+  border-color: rgba(245, 230, 200, 0.6);
+  color: var(--scoreboard-cream);
+}
+
+.take-btn:hover {
+  box-shadow: 0 0 20px rgba(61, 255, 61, 0.3);
+  border-color: #88ff88;
+}
+
+.btn-icon {
+  font-size: 1.5rem;
+}
+
+.btn-text {
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.btn-hint {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  font-family: 'Courier Prime', monospace;
+}
+
+.batting-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.pitching-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--scoreboard-tan);
+  letter-spacing: 0.1em;
+}
+
+.pitch-animation {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.wind-up {
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--rust-orange);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: windUp 0.5s linear infinite;
+}
+
+@keyframes windUp {
+  to { transform: rotate(360deg); }
+}
+
+.result-wait {
+  padding: 1rem;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.loading-dots span {
+  width: 12px;
+  height: 12px;
+  background: var(--scoreboard-cream);
+  border-radius: 50%;
+  animation: dotPulse 0.6s ease infinite;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.instructions-panel {
+  display: flex;
+  gap: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border: 1px solid rgba(245, 230, 200, 0.1);
+}
+
+.instruction {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(245, 230, 200, 0.6);
+}
+
+kbd {
+  font-family: 'Courier Prime', monospace;
+  padding: 0.25rem 0.5rem;
+  background: rgba(245, 230, 200, 0.1);
+  border: 1px solid rgba(245, 230, 200, 0.2);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .batting-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .control-btn {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .btn-text {
+    font-size: 1.25rem;
+  }
+
+  .instructions-panel {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .result-display {
+    padding: 0.5rem 1rem;
+  }
+
+  .result-text {
+    font-size: 1.2rem;
+  }
+}
